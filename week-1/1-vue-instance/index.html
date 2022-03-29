@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1><!-- vvue içersindeki changeTitle fonksiyonu burda da kullanılır -->
+        <p>{{content}}</p>
+        <a :href="google.url" :target="google.target" :alt="google.alt">
+            {{google.title}}</a> <!-- v-bind ile property içindeki değeri burada atarız, bind etmek için : yaparak kısaltabiliriz -->
+        <br/>
+        <br/>
+
+        <button v-on:click="changeTitle('1. Buton')">Title Değiştir 1</button>
+        <button v-on:click="changeTitle('2. Buton')">Title Değiştir 2</button>
+
+        <div @mousemove = "updateCoords('Mouse Move', $event)" class="box" @click="changeTitle('Box Üzerinden gelen')"></div>
+        <span>{{coords.eventTitle}} : ({{coords.x}},{{coords.y}})</span>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

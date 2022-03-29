@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Conditions</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2 p-2">
+                    <button class="btn btn-primary btn-sm" @click="showContainer = !showContainer">Aç / Kapat</button>
+
+                    <h1 v-if="!showContainer" class="text-danger">Başlangıç</h1>
+                    <!--<h1 v-if="showContainer" class="text-primary">Sonradan</h1>-->
+                    <h1 v-else class="text-primary">Sonradan</h1>
+                    <hr/>
+                    <h3 :class="counterBoxClasses">Değer : {{counter}}</h3>
+                    <button class="btn btn-success btn-sm" @click="counter++">Arttır</button>
+                    <button class="btn btn-danger btn-sm" @click="counter--">Azalt</button>
+                    <h1 v-if="counter > 5" class="text-primary">5ten büyük</h1>
+                    <h1 v-else-if="counter < 5" class="text-danger">5ten küçük</h1>
+                    <h1 v-else>5e eşittir</h1>
+
+                    <h1 v-show="counter > 5" class="text-primary">5ten büyük</h1>
+                    <!--element içerisinde gözükür fakat display nonedır-->
+                    <h1 v-show="counter < 5" class="text-danger">5ten küçük</h1>
+                    <h1 v-show="counter == 5">5e eşittir</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Loops</title>
+    <style>
+        .uncompleted-item {
+            background-color: #dc354536;
+            color: white;
+        }
+        
+        .completed-item {
+            background-color: #79875440;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="row mt-5">
+            <div class="col-4 offset-4 p-2 card">
+                <h3 class="text-center">Todo List</h3>
+                <div class="d-flex justify-content-star">
+                    <input class="form-control mb-2" type="text" v-model="key" @keydown.enter="addTodo">
+                </div>
+                <br/>
+                <div v-if="itemList.length == 0">
+                    <ul class="list-group">
+                        <div class="alert alert-warning">Todo Ekleyin</div>
+                    </ul>
+                </div>
+                <div v-else>
+                    <ul class="list-group">
+                        <li v-for="item in filteredList" :key="item.id" :class="{'completed-item':item.completed, 'uncompleted-item': !item.completed}" class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <input type="checkbox" class="from-check-input" v-model="item.completed" :id="`completed_checkbox_${item.id}`">
+                                <label :for="`completed_checkbox_${item.id}`" class="form-check-label ml-2">{{item.text}}</label>
+                            </div>
+                            <button class="btn btn-danger btn-sm" @click="removeTodo(item)">Sil</button>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-success m-2">Tamamlanan Todo: {{completedItemCount[0]}}</small>
+                        <small class="text-danger m-2">Tamamlanmayan Todo: {{completedItemCount[1]}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
